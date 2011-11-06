@@ -7,7 +7,7 @@ require "json"
 Slim::Engine.set_default_options :pretty => true
 
 t = Tilt.new "assets/index.slim"
-f = File.new "index.html", "w"
+f = File.new "index.html", "w+"
 f.write(t.render())
 
 if false
@@ -23,9 +23,9 @@ end
 
 `coffee -cbo javascripts assets/*.coffee`
 
-`git add .`
 puts 'enter commit message: '
 message = gets
+`git add .`
 `git commit -m '#{message}'`
 `git push origin master`
 `git branch -d gh-pages`
