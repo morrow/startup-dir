@@ -9,6 +9,7 @@ Slim::Engine.set_default_options :pretty => true
 t = Tilt.new "assets/index.slim"
 f = File.new "index.html", "w+"
 f.write(t.render())
+f.close
 
 if false
   files = Dir.glob "config/*.yaml"
@@ -24,6 +25,7 @@ end
 `coffee -cbo javascripts assets/*.coffee`
 
 puts 'enter commit message: '
+
 message = gets.strip.chomp
 `git add .
 git commit -m '#{message}'
