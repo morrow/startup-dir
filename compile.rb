@@ -19,6 +19,8 @@ if false
     f = File.open "#{file}.yaml", "r"
     o = File.open "#{out}.json", "w"
     o.write(YAML::load(f.read).to_json)
+    f.close
+    o.close
   end
 end
 
