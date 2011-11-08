@@ -7,17 +7,17 @@ class Outline
 
   write:(element)->
     $(element).append @htmlify @outline
-    $(element).append(document.createElement("pre")).find("pre").text @htmlify(@outline)
+    $(element).append(document.createElement("pre")).find("pre").text @htmlify(@outline, true)
 
   tagify:(tag, content="")->
     return "<#{tag}>#{content}</#{tag}>"
 
-  htmlify:(object)->
+  htmlify:(object, prettify=false)->
     result = ""
     if object instanceof Array
-      result += @tagify "ul"
       for item in object
         result += @tagify "li", item 
+      result = @tagify "ul", result
     else if object instanceof Object
       for item of object
         if parseInt(item) > 0 and parseInt(item).toString().length == item.toString().length
@@ -31,4 +31,6 @@ class Outline
             result += @tagify tag, @htmlify(object[item])
     else
       return object
+    if prettify
+      indent(result)
     return result

@@ -7,7 +7,7 @@ Outline = (function() {
   }
   Outline.prototype.write = function(element) {
     $(element).append(this.htmlify(this.outline));
-    return $(element).append(document.createElement("pre")).find("pre").text(this.htmlify(this.outline));
+    return $(element).append(document.createElement("pre")).find("pre").text(this.htmlify(this.outline, true));
   };
   Outline.prototype.tagify = function(tag, content) {
     if (content == null) {
@@ -15,15 +15,18 @@ Outline = (function() {
     }
     return "<" + tag + ">" + content + "</" + tag + ">";
   };
-  Outline.prototype.htmlify = function(object) {
+  Outline.prototype.htmlify = function(object, prettify) {
     var item, result, tag, _i, _len;
+    if (prettify == null) {
+      prettify = false;
+    }
     result = "";
     if (object instanceof Array) {
-      result += this.tagify("ul");
       for (_i = 0, _len = object.length; _i < _len; _i++) {
         item = object[_i];
         result += this.tagify("li", item);
       }
+      result = this.tagify("ul", result);
     } else if (object instanceof Object) {
       for (item in object) {
         if (parseInt(item) > 0 && parseInt(item).toString().length === item.toString().length) {
@@ -41,6 +44,9 @@ Outline = (function() {
       }
     } else {
       return object;
+    }
+    if (prettify) {
+      indent(result);
     }
     return result;
   };
