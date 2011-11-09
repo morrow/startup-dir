@@ -8,11 +8,13 @@ data = {
         "items": {
           "1": {
             "name": "indinero",
-            "url(href='https://indinero.com')": "https://indinero.com"
+            "website(href='https://indinero.com')": "https://indinero.com",
+            "description": "inDinero brings the power of a financial advisor to the internet, and it’s the fastest growing way for business to manage their money online."
           },
           "2": {
             "name": "kissmetrics",
-            "url(href='https://kissmetrics.com')": "https://www.kissmetrics.com/"
+            "website(href='https://kissmetrics.com')": "https://www.kissmetrics.com/",
+            "description": "Engagement data made easy. Learn faster, grow your business, and make smarter decisions."
           }
         }
       },
@@ -21,7 +23,17 @@ data = {
         "items": {
           "1": {
             "name": "leftronic",
-            "url(href='https://beta.leftronic.com/main/')": "https://beta.leftronic.com/main/"
+            "website(href='https://beta.leftronic.com/main/')": "https://beta.leftronic.com/main/"
+          }
+        }
+      },
+      "education": {
+        "category": "Education",
+        "items": {
+          "1": {
+            "name": "Khan Academy",
+            "website(href='http://www.khanacademy.org')": "http://www.khanacademy.org",
+            "description": "With a library of over 2,600 videos covering everything from arithmetic to physics, finance, and history and 233 practice exercises, we're on a mission to help you learn what you want, when you want, at your own pace."
           }
         }
       },
@@ -30,7 +42,16 @@ data = {
         "items": {
           "1": {
             "name": "fabricly",
-            "url(href='http://fabricly.com')": "http://fabricly.com"
+            "website(href='http://fabricly.com')": "http://fabricly.com"
+          }
+        }
+      },
+      "cloud": {
+        "category": "Cloud Storage",
+        "items": {
+          "1": {
+            "name": "AeroFS",
+            "description": "AeroFS allows you to sync, share, and backup files easily between all your devices and your friends!"
           }
         }
       }

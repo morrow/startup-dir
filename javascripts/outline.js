@@ -1,15 +1,29 @@
-var Outline;
-Outline = (function() {
-  function Outline(element) {
+var Skeleton;
+Skeleton = (function() {
+  function Skeleton(element) {
     this.root = element;
-    this.outline = data.outline;
+    this.skeleton = data.skeleton;
     this.write(this.root);
+    this.bindEvents();
   }
-  Outline.prototype.write = function(element) {
-    $(element).append(this.htmlify(this.outline));
-    return $(element).append(document.createElement("pre")).find("pre").text(this.htmlify(this.outline, true));
+  Skeleton.prototype.bindEvents = function() {
+    return $(".items > *").live("click", function(e) {
+      if (!$(this)[0].nodeName.match(/A/)) {
+        if ($(this).hasClass("expanded")) {
+          return $(this).removeClass("expanded");
+        } else {
+          return $(this).addClass("expanded");
+        }
+      }
+    });
   };
-  Outline.prototype.tagify = function(tag, content) {
+  Skeleton.prototype.write = function(element) {
+    $(element).hide();
+    $(element).append(this.htmlify(this.skeleton));
+    $(element).append(document.createElement("pre")).find("pre").text(this.htmlify(this.skeleton, true));
+    return $(element).fadeIn("fast");
+  };
+  Skeleton.prototype.tagify = function(tag, content) {
     var attributes, matches, node;
     if (content == null) {
       content = "";
@@ -22,23 +36,34 @@ Outline = (function() {
     }
     matches = tag.match(/a|abbr|address|area|article|aside|audio|b|base|bdi|bdo|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|command|datalist|dd|del|details|device|dfn|div|dl|dt|em|embed|fieldset|figcaption|figure|footer|form|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|keygen|label|legend|li|link|map|mark|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|table|tbody|td|textarea|tfoot|th|thead|time|title|tr|track|ul|var|video|wbr/);
     if (matches && matches[0].length === tag.length && !matches[0].match(/title/)) {
+      if (parseInt(tag) > 0 && parseInt(tag).toString().length === tag.toString().length) {
+        tag = "n" + tag;
+      }
       return "<" + tag + ">" + content + "</" + tag + ">";
     } else {
       node = "div";
-      if (attributes && attributes.match(/href/)) {
-        node = "a href='" + content + "'";
+      if (attributes) {
+        if (attributes.match(/href/)) {
+          node = "a";
+          if (!attributes.match(window.location.href)) {
+            attributes += " target='_blank'";
+          }
+        }
+      }
+      if (content.match(/\.jpg$|\.png$/)) {
+        return "<img class='" + tag + "' src='" + content + "' />";
       }
       return "<" + node + " class=\"" + tag + "\"" + attributes + ">" + content + "</" + node + ">";
     }
   };
-  Outline.prototype.process = function(type, input) {
+  Skeleton.prototype.process = function(type, input) {
     if (type == null) {
       type = "value";
     }
     return input;
   };
-  Outline.prototype.htmlify = function(object, prettify) {
-    var item, result, tag, _i, _len;
+  Skeleton.prototype.htmlify = function(object, prettify) {
+    var item, result, _i, _len;
     if (prettify == null) {
       prettify = false;
     }
@@ -52,17 +77,12 @@ Outline = (function() {
       result = this.tagify("ul", result);
     } else if (object instanceof Object) {
       for (item in object) {
-        if (parseInt(item) > 0 && parseInt(item).toString().length === item.toString().length) {
-          tag = "n" + item;
-        } else {
-          tag = item;
-        }
         switch (typeof object[item]) {
           case "string":
-            result += this.tagify(tag, this.htmlify(object[item]));
+            result += this.tagify(item, this.htmlify(object[item]));
             break;
           case "object":
-            result += this.tagify(tag, this.htmlify(object[item]));
+            result += this.tagify(item, this.htmlify(object[item]));
         }
       }
     } else {
@@ -73,5 +93,5 @@ Outline = (function() {
     }
     return result;
   };
-  return Outline;
+  return Skeleton;
 })();
