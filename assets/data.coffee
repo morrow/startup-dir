@@ -1,6 +1,6 @@
 data = 
-  outline:
-    "outline":
+  document:
+    "root":
       "h1":"Companies"
       "accounting":
         "category":"Accounting"

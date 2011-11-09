@@ -1,12 +1,12 @@
-var Skeleton;
-Skeleton = (function() {
-  function Skeleton(element) {
+var App;
+App = (function() {
+  function App(element) {
     this.root = element;
-    this.skeleton = data.skeleton;
+    this.document = data.document;
     this.write(this.root);
     this.bindEvents();
   }
-  Skeleton.prototype.bindEvents = function() {
+  App.prototype.bindEvents = function() {
     return $(".items > *").live("click", function(e) {
       if (!$(this)[0].nodeName.match(/A/)) {
         if ($(this).hasClass("expanded")) {
@@ -17,13 +17,13 @@ Skeleton = (function() {
       }
     });
   };
-  Skeleton.prototype.write = function(element) {
+  App.prototype.write = function(element) {
     $(element).hide();
-    $(element).append(this.htmlify(this.skeleton));
-    $(element).append(document.createElement("pre")).find("pre").text(this.htmlify(this.skeleton, true));
+    $(element).append(this.htmlify(this.document));
+    $(element).append(document.createElement("pre")).find("pre").text(this.htmlify(this.document, true));
     return $(element).fadeIn("fast");
   };
-  Skeleton.prototype.tagify = function(tag, content) {
+  App.prototype.tagify = function(tag, content) {
     var attributes, matches, node;
     if (content == null) {
       content = "";
@@ -56,13 +56,13 @@ Skeleton = (function() {
       return "<" + node + " class=\"" + tag + "\"" + attributes + ">" + content + "</" + node + ">";
     }
   };
-  Skeleton.prototype.process = function(type, input) {
+  App.prototype.process = function(type, input) {
     if (type == null) {
       type = "value";
     }
     return input;
   };
-  Skeleton.prototype.htmlify = function(object, prettify) {
+  App.prototype.htmlify = function(object, prettify) {
     var item, result, _i, _len;
     if (prettify == null) {
       prettify = false;
@@ -93,5 +93,5 @@ Skeleton = (function() {
     }
     return result;
   };
-  return Skeleton;
+  return App;
 })();

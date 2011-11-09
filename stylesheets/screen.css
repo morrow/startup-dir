@@ -13,12 +13,12 @@ a:hover {
   text-decoration:underline;
 }
 
-.outline * {
+.root * {
   margin:1.5em 1em;
   display:inline-block;
 }
 
-.outline > * {
+.root > * {
   display:block;
   margin-left:0em;
   margin-top:0em;
