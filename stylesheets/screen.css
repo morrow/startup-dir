@@ -1,0 +1,17 @@
+.outline * {
+  margin-left:1.5em;
+}
+
+.outline > * {
+  margin-left:0em;
+}
+
+.category {
+  font-weight:bold;
+  font-size:150%;
+}
+
+li {
+  display:block;
+  margin:1em;
+}
