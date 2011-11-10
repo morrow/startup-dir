@@ -5,6 +5,9 @@ class App
     @document = data.document
     @write(@root)
     @bindEvents()
+    window.setTimeout -> 
+      $(".logo").each -> $(this).css "margin-top": (($(this).parent().height() - $(this).height()) / 2) + "px"
+    , 10
 
   bindEvents:->
     $(".items > *").live "click", (e)->

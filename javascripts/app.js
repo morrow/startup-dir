@@ -5,6 +5,13 @@ App = (function() {
     this.document = data.document;
     this.write(this.root);
     this.bindEvents();
+    window.setTimeout(function() {
+      return $(".logo").each(function() {
+        return $(this).css({
+          "margin-top": (($(this).parent().height() - $(this).height()) / 2) + "px"
+        });
+      });
+    }, 10);
   }
   App.prototype.bindEvents = function() {
     $(".items > *").live("click", function(e) {
