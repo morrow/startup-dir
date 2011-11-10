@@ -26,13 +26,14 @@ a:hover {
 
 .items {
   vertical-align:top;
+  margin-top:0em;
+  margin-bottom:0em;
 }
 
 .items > * {
   background:#fff;
   margin:0em .5em;
   max-width:400px;
-  height:55px;
   overflow:hidden;
   vertical-align:top;
   cursor:pointer;
@@ -45,7 +46,7 @@ a:hover {
 }
 
 .items .website {
-  float:right;
+  display:none;
   margin-right:2em;
   margin-top:1.9em;
 }
@@ -57,36 +58,58 @@ a:hover {
   border:1px solid #ccc;
 }
 
+.items > * > * {
+  display:none;
+}
 
-.items > *.expanded .description {
-  display:block;
+.items .logo {
+  display:block !important;
+  max-height:3.5em;
+  max-width:370px;
+  vertical-align:top;
+  margin:.5em;
+}
+
+.items .expanded .logo {
+  margin:1.5em;
+  max-height:5em;
+}
+
+.items > *.expanded > * {
+  display:inline-block;
 }
 
 .items .description {
-  display:none;
   margin-top:0em;
-  padding:2em 1em 1em 1em;
+  margin-bottom:0em;
+  padding:2em 1em 2em 1em;
   border-top:1px dashed #ddd;
+  border-bottom:1px dashed #ddd;
   cursor:default;
-}
-
-.logo {
-  height:2em;
-  vertical-align:top;
 }
 
 .category {
   font-weight:bold;
   font-size:150%;
-  width:100px;
+  width:170px;
   background:#333;
   color:#eee;
+  text-align:left;
   vertical-align:top;
-  text-align:center;
   line-height:1.5em;
-  padding:0.8em;
-  margin-top:1.1em;
+  padding:0.8em 0.5em;
+  margin-top:0em;
   cursor:pointer;
+}
+
+.category * {
+  margin:0em;
+}
+
+.category .icon {
+  font-family:"Pictos";
+  margin-right:1em;
+  color:#87CCF8;
 }
 
 .category:hover {
@@ -94,7 +117,7 @@ a:hover {
   color:white;
 }
 
-.name {
+.items .name {
   font-weight:bold;
   font-size:120%;
 }
@@ -103,3 +126,16 @@ li {
   display:block;
   margin:1em;
 }
+
+.links a {
+  text-align:right;
+  margin:1em;
+  background-repeat:no-repeat;
+  background-position-left:0px;
+  background-position-top:0px;
+  background-size:14px;
+  padding-left:2em;
+}
+
+.links .hnsearch { background-image:url(../images/hnsearch.png); }
+.links .twitter { background-image:url(../images/twitter.png); }

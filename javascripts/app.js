@@ -51,12 +51,11 @@ App = (function() {
       return "<" + tag + ">" + content + "</" + tag + ">";
     } else {
       node = "div";
-      if (attributes) {
-        if (attributes.match(/href/)) {
-          node = "a";
-          if (!attributes.match(window.location.href)) {
-            attributes += " target='_blank'";
-          }
+      if ((attributes && attributes.match(/href/)) || content.indexOf('http') === 0) {
+        node = "a";
+        attributes = "href='" + content + "'";
+        if (!attributes.match(window.location.href)) {
+          attributes += " target='_blank'";
         }
       }
       if (content.match(/\.jpg$|\.png$/)) {

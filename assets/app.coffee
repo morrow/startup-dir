@@ -38,11 +38,11 @@ class App
       return "<#{tag}>#{content}</#{tag}>"
     else
       node = "div"
-      if attributes
-        if attributes.match /href/
-          node = "a"
-          if not attributes.match window.location.href
-            attributes += " target='_blank'"
+      if (attributes and attributes.match /href/) or content.indexOf('http') == 0
+        node = "a"
+        attributes = "href='#{content}'"
+        if not attributes.match window.location.href
+          attributes += " target='_blank'"
       if content.match /\.jpg$|\.png$/
         return "<img class='#{tag}' src='#{content}' />"
       return "<#{node} class=\"#{tag}\"#{attributes}>#{content}</#{node}>"
