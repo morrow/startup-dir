@@ -8,11 +8,17 @@ class App
 
   bindEvents:->
     $(".items > *").live "click", (e)->
-      if not $(this)[0].nodeName.match /A/ 
-        if $(this).hasClass("expanded")
+      if not $(this)[0].nodeName.match /A/
+        if $(this).hasClass("expanded") and not $(e.target)[0].className.match /name|description|website/
           $(this).removeClass("expanded")
         else
           $(this).addClass("expanded")
+    $(".category").live "click", (e) ->
+      items = $(this).siblings(".items").children()
+      if $(items).hasClass("expanded")
+        $(items).removeClass "expanded"
+      else
+        $(items).addClass "expanded"
 
   write:(element)->
     $(element).hide()
