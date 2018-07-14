@@ -25,6 +25,7 @@ if false
 end
 
 `coffee -cbo javascripts assets/*.coffee`
+`coffee -cbo javascripts data/*.coffee`
 
 puts 'enter commit message: '
 
