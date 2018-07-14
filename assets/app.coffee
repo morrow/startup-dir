@@ -7,7 +7,7 @@ class App
     @bindEvents()
     window.setTimeout -> 
       $(".logo").each -> $(this).css "margin-top": (($(this).parent().height() - $(this).height()) / 2) + "px"
-    , 10
+    , 100
 
   bindEvents:->
     $(".items > *").live "click", (e)->
@@ -26,7 +26,7 @@ class App
   write:(element)->
     $(element).hide()
     $(element).append @htmlify @document
-    $(element).append(document.createElement("pre")).find("pre").text @htmlify(@document, true)
+    #$(element).append(document.createElement("pre")).find("pre").text @htmlify(@document, true)
     $(element).fadeIn("fast")
 
   tagify:(tag, content="")->
@@ -46,7 +46,7 @@ class App
         attributes = "href='#{content}'"
         if not attributes.match window.location.href
           attributes += " target='_blank'"
-      if content.match /\.jpg$|\.png$/
+      if content.match /\.jpg$|\.png$|\.gif$/
         return "<img class='#{tag}' src='#{content}' />"
       return "<#{node} class=\"#{tag}\"#{attributes}>#{content}</#{node}>"
 

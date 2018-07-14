@@ -19,11 +19,11 @@ data =
             name:"KISSmetrics"
             website:"https://www.kissmetrics.com/"
             description:"Engagement data made easy. Learn faster, grow your business, and make smarter decisions."
-      "cloud":
-        "category":
+      cloud:
+        category:
           icon:"c"
           name:"Cloud Storage"
-        "items":
+        items:
           "1":
             logo:"./images/aerofs.png"
             name:"AeroFS"
@@ -94,6 +94,38 @@ data =
             name:"WePay"
             website:"http://wepay.com"
             description:"WePay takes the hassle out of collecting payments online. Start accepting payments in under a minute; no merchant account, website, or programming required."
+      hosting:
+        category:
+          icon:"3"
+          name:"Hosting"
+        items:
+          "1":
+            logo:"./images/engineyard.png"
+            name:"Engine Yard"
+            website:"http://www.engineyard.com/"
+            description:"""
+              Engine Yard is the leading Platform as a Service (PaaS). With deep expertise in Ruby on Rails and PHP,
+              combined with powerful orchestration, deep community involvement and world-class service, Engine Yard
+              empowers businesses to build and run cloud-based applications easily and cost-effectively. Thousands
+              of customers, from explosive-growth Web startups to Fortune 500 enterprises, rely on Engine Yard for
+              agile deployment and scaling, high performance, and 24×7 uptime, allowing them to leverage the cloud
+              for competitive advantage. Headquartered in San Francisco, Calif., Engine Yard is backed by Benchmark
+              Capital, New Enterprise Associates, and Amazon.com."""
+          "2":
+            logo:"./images/aws.gif"
+            name:"Amazon Web Services"
+            website:"http://aws.amazon.com"
+            description:"""
+              Since early 2006, Amazon Web Services (AWS) has provided companies of all sizes with an infrastructure
+              web services platform in the cloud. With AWS you can requisition compute power, storage, and other 
+              services–gaining access to a suite of elastic IT infrastructure services as your business demands them.
+              With AWS you have the flexibility to choose whichever development platform or programming model makes 
+              the most sense for the problems you’re trying to solve. You pay only for what you use, with no up-front
+              expenses or long-term commitments, making AWS the most cost-effective way to deliver your application 
+              to your customers and clients. And, with AWS, you can take advantage of Amazon.com’s global computing 
+              infrastructure that is the backbone of Amazon.com’s multi-billion retail business and transactional 
+              enterprise whose scalable, reliable, and secure distributed computing infrastructure has been honed for
+              over a decade."""
       productivity:
         category:
           icon:"3"
