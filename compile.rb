@@ -6,8 +6,11 @@ require "json"
 
 Slim::Engine.set_default_options :pretty => true
 
-t = Tilt.new "assets/index.slim"
-f = File.new "index.html", "w+"
+# make build directory if not exists
+Dir.mkdir('build') unless Dir.exist?('build')
+
+t = Tilt.new "src/assets/index.slim"
+f = File.new "build/index.html", "w+"
 f.write(t.render())
 f.close
 
@@ -24,8 +27,11 @@ if false
   end
 end
 
-`coffee -cbo javascripts assets/*.coffee`
-`coffee -cbo javascripts data/*.coffee`
+`coffee -cbo build/javascripts src/assets/*.coffee`
+`coffee -cbo build/javascripts src/data/*.coffee`
+
+# copy static assets
+`cp -R src/*.{html,js,css,md} build/`
 
 puts 'enter commit message: '
 
@@ -35,4 +41,4 @@ git commit -m '#{message}'
 git push origin master
 git branch -d gh-pages
 git branch gh-pages
-git push origin gh-pages`
+git subtree push --prefix build origin gh-pages`
