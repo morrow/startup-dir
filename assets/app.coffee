@@ -26,7 +26,6 @@ class App
   write:(element)->
     $(element).hide()
     $(element).append @htmlify @document
-    #$(element).append(document.createElement("pre")).find("pre").text @htmlify(@document, true)
     $(element).fadeIn("fast")
 
   tagify:(tag, content="")->
@@ -53,7 +52,7 @@ class App
   process:(type="value", input)->
     return input
 
-  htmlify:(object, prettify=false)->
+  htmlify:(object)->
     result = ""
     if object instanceof Array
       for item in object
@@ -69,6 +68,4 @@ class App
             result += @tagify item, @htmlify(object[item])
     else
       return @process("value", object)
-    if prettify
-      result = indent(result, null)
     return result
